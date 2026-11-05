@@ -173,6 +173,23 @@ a{color:var(--green)}
     <div class="intro">
       <p class="tagline">صفحة يكتب فيها أولياء الأمور والمعلمات والإداريات والطلاب والطالبات كلماتهم للوطن، وتظهر المشاركات مباشرة على جدار مشترك.</p>
 
+      <blockquote class="story">
+        <p>نختلف في آرائنا، وتتنوع وجهات نظرنا، ويبقى الوطن هو ما يجمعنا؛ <span class="heart">فعنده تلتقي القلوب على كلمة واحدة.</span></p>
+        <p>المملكة في قلوبنا أكبر من حدود ترسمها خريطة؛ هي تاريخ نعتز به، وهوية نحملها، وأمن ننعم به، وانتماء نورثه لأبنائنا جيلًا بعد جيل.</p>
+        <p>اللهم احفظ بلادنا، وأدم عليها عزّها وأمنها واستقرارها 🇸🇦</p>
+      </blockquote>
+
+      <div class="who"><span class="lbl">شاركونا:</span><span class="p">المعلمات</span><span class="p">الإداريات</span><span class="p">الطلاب والطالبات</span><span class="p">أولياء الأمور</span></div>
+
+      <div class="stats" aria-live="polite">
+        <span><span class="big" id="sTotal">0</span> مشاركة</span>
+        <span>المعلمات<b id="s_teacher">0</b></span>
+        <span>الإداريات<b id="s_staff">0</b></span>
+        <span>الطلاب<b id="s_student">0</b></span>
+        <span>أولياء الأمور<b id="s_parent">0</b></span>
+        <span>تعهدات<b id="sPledge">0</b></span>
+      </div>
+
       <form class="form" id="form" novalidate>
         <div>
           <h2>أضيفوا مشاركتكم</h2>
@@ -334,6 +351,7 @@ a{color:var(--green)}
   function render(){
     const c={teacher:0,staff:0,student:0,parent:0}; let pl=0;
     S.posts.forEach(x=>{ if(c[x.role]!=null) c[x.role]++; if(x.pledge||x.kind==="pledge") pl++; });
+    $("sTotal").textContent=S.posts.length; Object.keys(c).forEach(k=>$("s_"+k).textContent=c[k]); $("sPledge").textContent=pl;
     
 
     const g=$("grid"); g.textContent="";
