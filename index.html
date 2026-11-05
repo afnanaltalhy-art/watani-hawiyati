@@ -61,7 +61,7 @@ a{color:var(--green)}
 .kicker{font-size:14px;color:var(--gold);font-weight:700}
 .intro h1{font-size:clamp(30px,4.6vw,46px);color:var(--green)}
 .intro h1 .r{color:var(--red)}
-.tagline{margin-top:8px;color:var(--muted);font-size:16px;max-width:60ch}
+.tagline{color:var(--ink);font-size:17px;line-height:1.9;max-width:60ch;font-weight:700}
 .intro h1 .sep{color:var(--gold);font-weight:400;padding-inline:.15em}
 .story{position:relative;margin:0;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--red);border-radius:12px;display:flex;flex-direction:column;gap:10px}
 .story p{font-size:17px;line-height:1.95;max-width:62ch}
@@ -171,28 +171,7 @@ a{color:var(--green)}
     </div>
 
     <div class="intro">
-      <div>
-        <div class="kicker">مبادرة السعودية 🇸🇦 خط أحمر</div>
-        <h1>وطني هويتي<span class="sep">..</span><span class="r">والسعودية خط أحمر</span></h1>
-        <p class="tagline">صفحة يكتب فيها أولياء الأمور والمعلمات والإداريات والطلاب والطالبات كلماتهم للوطن، وتظهر المشاركات مباشرة على جدار مشترك.</p>
-      </div>
-
-      <blockquote class="story">
-        <p>نختلف في آرائنا، وتتنوع وجهات نظرنا، ويبقى الوطن هو ما يجمعنا؛ <span class="heart">فعنده تلتقي القلوب على كلمة واحدة.</span></p>
-        <p>المملكة في قلوبنا أكبر من حدود ترسمها خريطة؛ هي تاريخ نعتز به، وهوية نحملها، وأمن ننعم به، وانتماء نورثه لأبنائنا جيلًا بعد جيل.</p>
-        <p>اللهم احفظ بلادنا، وأدم عليها عزّها وأمنها واستقرارها 🇸🇦</p>
-      </blockquote>
-
-      <div class="who"><span class="lbl">شاركونا:</span><span class="p">المعلمات</span><span class="p">الإداريات</span><span class="p">الطلاب والطالبات</span><span class="p">أولياء الأمور</span></div>
-
-      <div class="stats" aria-live="polite">
-        <span><span class="big" id="sTotal">0</span> مشاركة</span>
-        <span>المعلمات<b id="s_teacher">0</b></span>
-        <span>الإداريات<b id="s_staff">0</b></span>
-        <span>الطلاب<b id="s_student">0</b></span>
-        <span>أولياء الأمور<b id="s_parent">0</b></span>
-        <span>تعهدات<b id="sPledge">0</b></span>
-      </div>
+      <p class="tagline">صفحة يكتب فيها أولياء الأمور والمعلمات والإداريات والطلاب والطالبات كلماتهم للوطن، وتظهر المشاركات مباشرة على جدار مشترك.</p>
 
       <form class="form" id="form" novalidate>
         <div>
@@ -355,7 +334,7 @@ a{color:var(--green)}
   function render(){
     const c={teacher:0,staff:0,student:0,parent:0}; let pl=0;
     S.posts.forEach(x=>{ if(c[x.role]!=null) c[x.role]++; if(x.pledge||x.kind==="pledge") pl++; });
-    $("sTotal").textContent=S.posts.length; Object.keys(c).forEach(k=>$("s_"+k).textContent=c[k]); $("sPledge").textContent=pl;
+    
 
     const g=$("grid"); g.textContent="";
     const list=S.posts.filter(x=> S.filter==="all"?true : S.filter==="pledge"?(x.pledge||x.kind==="pledge") : S.filter==="dua"?x.kind==="dua" : x.role===S.filter);
